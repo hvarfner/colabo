@@ -1,0 +1,6 @@
+[submodule "Ax"]
+	path = Ax
+	url = git@github.com:hvarfner/Ax.git
+[submodule "PiJES"]
+	path = PiJES
+	url = git@github.com:hvarfner/PiJES.git
