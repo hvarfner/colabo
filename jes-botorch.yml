@@ -45,9 +45,11 @@ dependencies:
     - charset-normalizer==2.1.1
     - cloudpickle==2.2.0
     - cma==3.2.2
+    - configspace==0.6.1
     - contourpy==1.0.5
     - cycler==0.11.0
     - cython==0.29.32
+    - debtcollector==2.5.0
     - debugpy==1.6.3
     - decorator==5.1.1
     - defusedxml==0.7.1
@@ -57,12 +59,15 @@ dependencies:
     - emukit==0.4.9
     - entrypoints==0.4
     - executing==1.1.1
+    - fasteners==0.18
     - fastjsonschema==2.16.2
     - fonttools==4.37.2
     - future==0.18.2
+    - googlemaps==4.7.3
     - gpy==1.10.0
     - gpytorch==1.9.0
     - grapheme==0.6.0
+    - hpobench==0.0.9
     - hydra-core==1.2.0
     - hydra-submitit-launcher==1.2.0
     - idna==3.4
@@ -71,10 +76,12 @@ dependencies:
     - ipython==8.5.0
     - ipython-genutils==0.2.0
     - ipywidgets==8.0.2
+    - iso8601==1.1.0
     - jedi==0.18.1
     - jinja2==3.1.2
     - joblib==1.2.0
     - json5==0.9.10
+    - jsonargparse==4.18.0
     - jsonschema==4.16.0
     - jupyter==1.0.0
     - jupyter-client==7.4.3
@@ -87,18 +94,23 @@ dependencies:
     - jupyterlab-widgets==3.0.3
     - kiwisolver==1.4.4
     - lab==7.2
+    - liac-arff==2.5.0
     - linear-operator==0.1.1
     - markupsafe==2.1.1
     - matplotlib==3.6.2
     - matplotlib-inline==0.1.6
     - memory-profiler==0.60.0
+    - minio==7.1.13
     - mistune==2.0.4
+    - more-itertools==9.0.0
     - multipledispatch==0.6.0
     - nbclassic==0.4.5
     - nbclient==0.7.0
     - nbconvert==7.2.2
     - nbformat==5.7.0
     - nest-asyncio==1.5.6
+    - netaddr==0.8.0
+    - netifaces==0.11.0
     - notebook==6.5.1
     - notebook-shim==0.2.0
     - numpy==1.23.3
@@ -107,12 +119,18 @@ dependencies:
     - nvidia-cuda-runtime-cu11==11.7.99
     - nvidia-cudnn-cu11==8.5.0.96
     - omegaconf==2.2.3
+    - openml==0.13.0
     - opt-einsum==3.3.0
+    - oslo-concurrency==5.0.1
+    - oslo-config==9.1.0
+    - oslo-i18n==5.1.0
+    - oslo-utils==6.1.0
     - packaging==21.3
     - pandas==1.4.4
     - pandocfilters==1.5.0
     - paramz==0.9.5
     - parso==0.8.3
+    - pbr==5.11.1
     - pexpect==4.8.0
     - pickleshare==0.7.5
     - pillow==9.2.0
@@ -122,6 +140,7 @@ dependencies:
     - psutil==5.9.3
     - ptyprocess==0.7.0
     - pure-eval==0.2.2
+    - pyarrow==10.0.1
     - pybnn==0.0.5
     - pycparser==2.21
     - pygments==2.13.0
@@ -129,6 +148,7 @@ dependencies:
     - pyparsing==3.0.9
     - pyro-api==0.1.2
     - pyro-ppl==1.8.2
+    - pyro4==4.80
     - pyrsistent==0.18.1
     - python-dateutil==2.8.2
     - pytz==2022.2.1
@@ -137,14 +157,17 @@ dependencies:
     - qtconsole==5.3.2
     - qtpy==2.2.1
     - requests==2.28.1
+    - rfc3986==2.0.0
     - scikit-learn==1.1.2
     - scipy==1.9.1
     - send2trash==1.8.0
+    - serpent==1.41
     - simplejson==3.17.6
     - six==1.16.0
     - sniffio==1.3.0
     - soupsieve==2.3.2.post1
     - stack-data==0.5.1
+    - stevedore==4.1.1
     - submitit==1.4.5
     - tenacity==8.0.1
     - terminado==0.16.0
@@ -165,5 +188,6 @@ dependencies:
     - websocket-client==1.4.1
     - widgetsnbextension==4.0.3
     - wrapt==1.14.1
+    - xmltodict==0.13.0
     - zipp==3.10.0
 prefix: /home/hvarfner/anaconda3/envs/jes-botorch
