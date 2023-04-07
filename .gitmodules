@@ -4,3 +4,6 @@
 [submodule "PiJES"]
 	path = PiJES
 	url = git@github.com:hvarfner/PiJES.git
+[submodule "gpytorch"]
+	path = gpytorch
+	url = git@github.com:hvarfner/gpytorch.git
