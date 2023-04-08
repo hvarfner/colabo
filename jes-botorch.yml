@@ -65,7 +65,6 @@ dependencies:
     - future==0.18.2
     - googlemaps==4.7.3
     - gpy==1.10.0
-    - gpytorch==1.9.0
     - grapheme==0.6.0
     - hpobench==0.0.9
     - hydra-core==1.2.0
