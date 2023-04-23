@@ -1,0 +1,80 @@
+CAMB was written by Antony Lewis and Anthony Challinor and can be downloaded from
+
+http://camb.info/
+
+The purpose of this CAMB patch is to produce the necessary theory data with which to compute the LRG likelihood for a model which you specify in the usual CAMB input file.  To install the CAMB patch, there are two options.
+
+1) download CAMB Feb 2009.  Replace the inidriver.F90 and modules.f90 files with the ones in this directory, add bsplinepk.c to the CAMB directory, and edit the Makefile as stated below.
+2) To update your personal CAMB version, make the list of changes to those files below.
+
+Here are a complete list of changes:
+
+inidriver.F90: allows MatterPower output to be in format used for input in getlrgdr7like
+<          call Transfer_SaveToFiles(MT,TransferFileNames)
+<          call Transfer_SaveMatterPower(MT,MatterPowerFileNames)
+---
+>          if(P%NonLinear == NonLinear_LRG) then
+>            call Transfer_SaveToFiles(MT,TransferFileNames)
+>            call Transfer_SaveMatterPowerforLRG(MT,MatterPowerFileNames,w_lam)
+>          else
+>            call Transfer_SaveToFiles(MT,TransferFileNames)
+>            call Transfer_SaveMatterPower(MT,MatterPowerFileNames)
+>          endif
+
+modules.f90:
+
+added new nonlinear option for LRGs:
+<
+<          integer, parameter :: NonLinear_none=0, NonLinear_Pk =1, NonLinear_Lens=2
+---
+>          !! BR09_LRG add NonLinear_LRG = 3
+>          integer, parameter :: NonLinear_none=0, NonLinear_Pk =1, NonLinear_Lens=2, NonLinear_LRG=3
+
+added two functions in module Transfer bracketed by 
+!!!!  BR09_LRG additions
+
+subroutine Transfer_GetMatterPowerAndNW
+...
+subroutine Transfer_SaveMatterPowerforLRG
+...
+!!!!!  end BR09_LRG additions
+
+In addition, from Transfer_GetMatterPowerAndNW a c routine located in bsplinepk.c is called to produce a smooth version of the linear P(k) with no BAOs.  This routine references the gsl library, so you must have gsl installed on your machine to run this CAMB patch.  Info on downloading and installing GSL is available from
+
+http://www.gnu.org/software/gsl/
+
+Alternatively, for Mac OSX, if you use Fink to install packages on your machine, use the following command: 'sudo apt-get install gsl' 
+
+
+Here are the changes to the Makefile that worked on a MacPro; I expect this part is system dependent.  The trickiest part was figuring out that I needed to run gcc with the '-arch x86_64' flag to get ifort happy.
+
+6a7,8
+> CC = gcc
+> CFLAGS = -arch x86_64
+8,9c10
+< FFLAGS = -openmp -O2 -ip -W0 -WB -fpp2 -vec_report0
+< 
+---
+> FFLAGS = -openmp -O2 -ip -W0 -WB -fpp2 -vec_report0 -lgsl -lgslcblas -L/usr/local/lib
+92c93
+<       bessels.o $(EQUATIONS).o $(NONLINEAR).o lensing.o cmbmain.o camb.o
+---
+>       bessels.o $(EQUATIONS).o $(NONLINEAR).o lensing.o cmbmain.o camb.o bsplinepk.o
+103c104
+< modules.o: $(REIONIZATION).o
+---
+> modules.o: $(REIONIZATION).o bsplinepk.o
+126a128,130
+> bsplinepk.o: 
+>       $(CC) $(CFLAGS) -c bsplinepk.c
+> 
+
+Running patched CAMB:
+An example file is provided in params.ini for the best fit LCDM+WMAP5 model.  Everything is as usual, but set
+
+do_nonlinear = 3
+
+to print the matter power spectrum files in the format for getlrgdr7like.
+
+paramsfid.ini produces the same type of files but for the fiducial cosmological model; these are also necessary input to getlrgdr7like because they are used to normalize the theory curve.
+
