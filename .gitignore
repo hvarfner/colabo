@@ -1,6 +1,7 @@
 # Custom added
 lrgdr7like/
 extra_cambs
+camb/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
