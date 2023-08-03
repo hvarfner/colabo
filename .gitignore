@@ -3,6 +3,7 @@ lrgdr7like/
 extra_cambs
 camb/*
 botorch/
+mf-prior-bench/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
