@@ -20,11 +20,8 @@ dependencies:
   - pip=22.2.2=pyhd8ed1ab_0
   - python=3.9.13=h2660328_0_cpython
   - readline=8.1.2=h0f457ee_0
-  - setuptools=65.3.0=pyhd8ed1ab_1
   - sqlite=3.39.3=h4ff8645_0
   - tk=8.6.12=h27826a3_0
-  - tzdata=2022c=h191b570_0
-  - wheel=0.37.1=pyhd8ed1ab_0
   - xz=5.2.6=h166bdaf_0
   - pip:
     - about-time==3.1.1
@@ -33,20 +30,25 @@ dependencies:
     - anyio==3.6.2
     - argon2-cffi==21.3.0
     - argon2-cffi-bindings==21.2.0
-    - asttokens==2.0.8
+    - asttokens==2.2.1
     - attrs==22.1.0
     - autograd==1.5
     - babel==2.10.3
     - backcall==0.2.0
     - beautifulsoup4==4.11.1
     - bleach==5.0.1
-    - certifi==2022.9.24
+    - botorch==0.1.dev1993+g00f4a90.d20230802
+    - box2d-py==2.3.8
+    - celer==0.7.3
+    - certifi==2023.5.7
     - cffi==1.15.1
-    - charset-normalizer==2.1.1
+    - charset-normalizer==3.1.0
     - cloudpickle==2.2.0
     - cma==3.2.2
-    - configspace==0.6.1
-    - contourpy==1.0.5
+    - cmake==3.27.5
+    - coloredlogs==15.0.1
+    - configspace==0.4.21
+    - contourpy==1.0.7
     - cycler==0.11.0
     - cython==0.29.32
     - debtcollector==2.5.0
@@ -55,28 +57,38 @@ dependencies:
     - defusedxml==0.7.1
     - deprecated==1.2.13
     - dill==0.3.6
+    - download==0.3.5
     - emcee==3.1.3
     - emukit==0.4.9
     - entrypoints==0.4
-    - executing==1.1.1
+    - executing==1.2.0
     - fasteners==0.18
     - fastjsonschema==2.16.2
-    - fonttools==4.37.2
+    - filelock==3.12.4
+    - flatbuffers==23.5.26
+    - fonttools==4.39.4
     - future==0.18.2
     - googlemaps==4.7.3
     - gpy==1.10.0
+    - gpytorch==1.9.1
     - grapheme==0.6.0
-    - hpobench==0.0.9
+    - gym==0.24.0
+    - gym-notices==0.0.8
+    - hpobench==0.0.10
+    - humanfriendly==10.0
     - hydra-core==1.2.0
     - hydra-submitit-launcher==1.2.0
+    - hyperopt==0.2.7
     - idna==3.4
-    - importlib-metadata==5.0.0
+    - importlib-metadata==6.6.0
+    - importlib-resources==5.12.0
     - ipykernel==6.16.1
     - ipython==8.5.0
     - ipython-genutils==0.2.0
     - ipywidgets==8.0.2
     - iso8601==1.1.0
-    - jedi==0.18.1
+    - jahs-bench==1.0.0
+    - jedi==0.18.2
     - jinja2==3.1.2
     - joblib==1.2.0
     - json5==0.9.10
@@ -85,7 +97,7 @@ dependencies:
     - jupyter==1.0.0
     - jupyter-client==7.4.3
     - jupyter-console==6.4.4
-    - jupyter-core==4.11.2
+    - jupyter-core==5.3.0
     - jupyter-server==1.21.0
     - jupyterlab==3.5.0
     - jupyterlab-pygments==0.2.2
@@ -93,15 +105,21 @@ dependencies:
     - jupyterlab-widgets==3.0.3
     - kiwisolver==1.4.4
     - lab==7.2
+    - lasagne==0.2.dev1
     - liac-arff==2.5.0
-    - linear-operator==0.1.1
+    - libsvmdata==0.4.1
+    - linear-operator==0.3.0
+    - lit==16.0.6
+    - llvmlite==0.41.0
     - markupsafe==2.1.1
     - matplotlib==3.6.2
     - matplotlib-inline==0.1.6
     - memory-profiler==0.60.0
+    - mf-prior-bench==0.1.0
     - minio==7.1.13
     - mistune==2.0.4
     - more-itertools==9.0.0
+    - mpmath==1.3.0
     - multipledispatch==0.6.0
     - nbclassic==0.4.5
     - nbclient==0.7.0
@@ -110,83 +128,111 @@ dependencies:
     - nest-asyncio==1.5.6
     - netaddr==0.8.0
     - netifaces==0.11.0
+    - networkx==3.1
     - notebook==6.5.1
     - notebook-shim==0.2.0
-    - numpy==1.23.3
+    - numba==0.58.0
+    - numpy==1.22.0
     - nvidia-cublas-cu11==11.10.3.66
+    - nvidia-cuda-cupti-cu11==11.7.101
     - nvidia-cuda-nvrtc-cu11==11.7.99
     - nvidia-cuda-runtime-cu11==11.7.99
     - nvidia-cudnn-cu11==8.5.0.96
+    - nvidia-cufft-cu11==10.9.0.58
+    - nvidia-curand-cu11==10.2.10.91
+    - nvidia-cusolver-cu11==11.4.0.1
+    - nvidia-cusparse-cu11==11.7.4.91
+    - nvidia-nccl-cu11==2.14.3
+    - nvidia-nvtx-cu11==11.7.91
     - omegaconf==2.2.3
-    - openml==0.13.0
+    - onnxruntime==1.15.1
+    - openml==0.10.2
     - opt-einsum==3.3.0
     - oslo-concurrency==5.0.1
     - oslo-config==9.1.0
     - oslo-i18n==5.1.0
     - oslo-utils==6.1.0
-    - packaging==21.3
-    - pandas==1.4.4
+    - packaging==23.1
+    - pandas==1.4.0
     - pandocfilters==1.5.0
     - paramz==0.9.5
     - parso==0.8.3
     - pbr==5.11.1
     - pexpect==4.8.0
     - pickleshare==0.7.5
-    - pillow==9.2.0
+    - pillow==9.5.0
+    - platformdirs==3.5.1
     - plotly==5.10.0
     - prometheus-client==0.15.0
-    - prompt-toolkit==3.0.31
+    - prompt-toolkit==3.0.38
+    - protobuf==4.23.4
     - psutil==5.9.3
     - ptyprocess==0.7.0
     - pure-eval==0.2.2
+    - py4j==0.10.9.7
     - pyarrow==10.0.1
     - pybnn==0.0.5
     - pycparser==2.21
-    - pygments==2.13.0
+    - pygments==2.15.1
     - pymoo==0.6.0
     - pyparsing==3.0.9
     - pyro-api==0.1.2
-    - pyro-ppl==1.8.2
+    - pyro-ppl==1.8.4
     - pyro4==4.80
     - pyrsistent==0.18.1
     - python-dateutil==2.8.2
-    - pytz==2022.2.1
+    - python-graphviz==0.20.1
+    - pytz==2023.3
     - pyyaml==6.0
-    - pyzmq==24.0.1
+    - pyzmq==25.0.2
     - qtconsole==5.3.2
     - qtpy==2.2.1
-    - requests==2.28.1
+    - requests==2.30.0
     - rfc3986==2.0.0
-    - scikit-learn==1.1.2
+    - scikit-learn==1.0.2
     - scipy==1.9.1
+    - seaborn==0.12.2
     - send2trash==1.8.0
     - serpent==1.41
+    - setuptools==67.7.2
+    - sgmcmc==0.0.1
     - simplejson==3.17.6
     - six==1.16.0
     - sniffio==1.3.0
     - soupsieve==2.3.2.post1
-    - stack-data==0.5.1
+    - sparse-ho-fork-leoiv==0.1.dev0
+    - stack-data==0.6.2
     - stevedore==4.1.1
     - submitit==1.4.5
+    - sympy==1.12
+    - tabulate==0.9.0
     - tenacity==8.0.1
     - terminado==0.16.0
+    - theano==1.0.5
     - threadpoolctl==3.1.0
     - tinycss2==1.2.1
     - tomli==2.0.1
-    - torch==1.13.0
+    - torch==1.13.1
     - torchvision==0.14.0
-    - tornado==6.2
-    - tqdm==4.64.1
-    - traitlets==5.5.0
+    - tornado==6.3.1
+    - tqdm==4.65.0
+    - traitlets==5.9.0
+    - triton==2.0.0
     - txt2tags==3.7
     - typeguard==2.13.3
-    - typing-extensions==4.3.0
-    - urllib3==1.26.12
-    - wcwidth==0.2.5
+    - typing-extensions==4.5.0
+    - tzdata==2023.3
+    - urllib3==2.0.2
+    - wcwidth==0.2.6
     - webencodings==0.5.1
     - websocket-client==1.4.1
+    - wheel==0.40.0
     - widgetsnbextension==4.0.3
     - wrapt==1.14.1
+    - xarray==2023.8.0
+    - xgboost==1.5.2
     - xmltodict==0.13.0
-    - zipp==3.10.0
+    - yacs==0.1.8
+    - yahpo-gym==1.0.1
+    - zipp==3.15.0
 prefix: /home/hvarfner/anaconda3/envs/jes-botorch
