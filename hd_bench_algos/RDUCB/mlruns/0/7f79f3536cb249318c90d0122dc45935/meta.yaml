@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/7f79f3536cb249318c90d0122dc45935/artifacts
+end_time: 1697107463670
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7f79f3536cb249318c90d0122dc45935
+run_name: debonair-slug-663
+run_uuid: 7f79f3536cb249318c90d0122dc45935
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697107463662
+status: 3
+tags: []
+user_id: hvarfner

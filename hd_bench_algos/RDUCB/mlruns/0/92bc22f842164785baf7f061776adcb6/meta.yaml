@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/92bc22f842164785baf7f061776adcb6/artifacts
+end_time: 1697107491806
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 92bc22f842164785baf7f061776adcb6
+run_name: ambitious-mare-591
+run_uuid: 92bc22f842164785baf7f061776adcb6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697107491799
+status: 3
+tags: []
+user_id: hvarfner

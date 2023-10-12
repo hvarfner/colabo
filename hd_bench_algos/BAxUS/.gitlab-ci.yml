@@ -1,0 +1,175 @@
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+before_script:
+  - ulimit -n
+  - apt-get update
+  - apt-get -y upgrade
+  - apt-get -y install libsuitesparse-dev libatlas-base-dev swig libopenblas-dev libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 libsdl2-ttf-2.0-0 libsdl2-dev
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+
+stages:
+  - test
+  - deploy
+
+.pip-test-base:
+  stage: test
+  script:
+    - pip install wheel numpy
+    - pip install --no-cache-dir "gpytorch<=1.8.1"
+    - pip install .
+    - pip install pytest pytest-cov coverage
+    - coverage --version
+    - python -m pytest -v --cov=baxus/ --junitxml=report.xml tests/
+    - coverage xml
+    - ls -al
+  artifacts:
+    when: always
+    reports:
+      cobertura: coverage.xml
+      junit: report.xml
+
+.requirements-test-base:
+  stage: test
+  script:
+    - pip install -r requirements.txt
+    - pip install pytest pytest-cov coverage
+    - coverage --version
+    - python -m pytest -v --cov=baxus/ --junitxml=report.xml tests/
+    - coverage xml
+    - ls -al
+  artifacts:
+    when: always
+    reports:
+      cobertura: coverage.xml
+      junit: report.xml
+
+pip-test-buster-3.8:
+  only:
+    - main
+  extends: .pip-test-base
+  stage: test
+  image: python:3.8-buster
+
+pip-test-buster-3.9:
+  extends: .pip-test-base
+  stage: test
+  image: python:3.9-buster
+
+pip-test-buster-3.10:
+  only:
+    - main
+  extends: .pip-test-base
+  stage: test
+  image: python:3.10-buster
+
+pip-test-bullseye-3.8:
+  only:
+    - main
+  extends: .pip-test-base
+  stage: test
+  image: python:3.8-bullseye
+
+pip-test-bullseye-3.9:
+  only:
+    - main
+  extends: .pip-test-base
+  stage: test
+  image: python:3.9-bullseye
+
+pip-test-bullseye-3.10:
+  only:
+    - main
+  extends: .pip-test-base
+  stage: test
+  image: python:3.10-bullseye
+
+requirements-test-buster-3.10:
+  extends: .requirements-test-base
+  stage: test
+  image: python:3.10-buster
+
+requirements-test-bullseye-3.10:
+  only:
+    - main
+  extends: .requirements-test-base
+  stage: test
+  image: python:3.10-bullseye
+
+docker-test:
+  stage: test
+  before_script:
+    - ''
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  tags:
+    - dind # docker in docker
+  script:
+    - docker build -t ${DOCKER_IMAGE_NAME} .
+    - docker run ${DOCKER_IMAGE_NAME} /bin/bash -c "pip install pytest pytest-cov coverage && python -m pytest -v --cov=baxus/ --junitxml=report.xml tests/"
+
+build-docs:
+  stage: deploy
+  only:
+    - tags
+  image: python:3.10-buster
+  script:
+    - apt-get update
+    - apt-get -y upgrade
+    - apt-get -y install texlive texlive-latex-extra latexmk
+    - pip install -r requirements.txt
+    - pip install sphinx m2r2 sphinx_rtd_theme
+    - pip install --no-cache-dir awscli
+    - cd docs
+    - sphinx-apidoc -o . ../baxus
+    - make html
+    - make latexpdf
+    - aws configure set region eu-north-1
+    - aws s3 sync --delete ./_build/html/ s3://$S3_BUCKET --acl public-read
+  artifacts:
+    name: "PDF documentation"
+    paths:
+      - docs/_build/latex/baxus.pdf
+
+docker-deploy:
+  stage: deploy
+  only:
+    - tags
+  image: docker:20.10.16
+  before_script:
+    - ''
+  services:
+    - docker:20.10.16-dind
+  tags:
+    - dind # docker in docker
+  script:
+    - docker build -t ${DOCKER_IMAGE_NAME} .
+    - echo ${DOCKER_PASSWORD} | docker login -u="${DOCKER_USERNAME}" --password-stdin
+    - docker push ${DOCKER_IMAGE_NAME}
+
+publish-test-pypi:
+  stage: deploy
+  image: python:3.10-buster
+  only:
+    - tags
+  script:
+    - pip install --upgrade twine
+    - python setup.py sdist
+    - twine upload -u __token__ -p ${TWINE_TEST_PYPI_PASSWORD} -r testpypi dist/*
+
+publish-pypi:
+  stage: deploy
+  image: python:3.10-buster
+  only:
+    - tags
+  script:
+    - pip install --upgrade twine
+    - python setup.py sdist
+    - twine upload -u __token__ -p ${TWINE_PYPI_PASSWORD} dist/*

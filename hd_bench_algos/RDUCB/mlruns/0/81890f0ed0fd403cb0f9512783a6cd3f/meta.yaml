@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/81890f0ed0fd403cb0f9512783a6cd3f/artifacts
+end_time: 1697108076148
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 81890f0ed0fd403cb0f9512783a6cd3f
+run_name: big-frog-956
+run_uuid: 81890f0ed0fd403cb0f9512783a6cd3f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697107945044
+status: 3
+tags: []
+user_id: hvarfner

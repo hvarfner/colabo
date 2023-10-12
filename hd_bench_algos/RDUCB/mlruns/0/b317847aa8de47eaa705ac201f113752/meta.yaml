@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/b317847aa8de47eaa705ac201f113752/artifacts
+end_time: 1697106869399
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b317847aa8de47eaa705ac201f113752
+run_name: RDUCB
+run_uuid: b317847aa8de47eaa705ac201f113752
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697106815307
+status: 3
+tags: []
+user_id: hvarfner

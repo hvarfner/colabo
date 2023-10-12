@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/mlruns/0/34d59fbf8cfb41a5ac713fd7c35c38b4/artifacts
+end_time: 1697118162956
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 34d59fbf8cfb41a5ac713fd7c35c38b4
+run_name: abundant-hare-603
+run_uuid: 34d59fbf8cfb41a5ac713fd7c35c38b4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697118095908
+status: 3
+tags: []
+user_id: hvarfner

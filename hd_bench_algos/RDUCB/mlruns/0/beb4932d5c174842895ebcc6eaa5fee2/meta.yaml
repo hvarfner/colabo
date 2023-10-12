@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/beb4932d5c174842895ebcc6eaa5fee2/artifacts
+end_time: 1697107550945
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: beb4932d5c174842895ebcc6eaa5fee2
+run_name: upset-bear-96
+run_uuid: beb4932d5c174842895ebcc6eaa5fee2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697107550937
+status: 3
+tags: []
+user_id: hvarfner

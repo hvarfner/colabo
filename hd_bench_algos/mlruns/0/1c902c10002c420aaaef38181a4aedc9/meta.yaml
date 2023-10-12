@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/mlruns/0/1c902c10002c420aaaef38181a4aedc9/artifacts
+end_time: 1697118261426
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1c902c10002c420aaaef38181a4aedc9
+run_name: amazing-panda-697
+run_uuid: 1c902c10002c420aaaef38181a4aedc9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697118230145
+status: 3
+tags: []
+user_id: hvarfner

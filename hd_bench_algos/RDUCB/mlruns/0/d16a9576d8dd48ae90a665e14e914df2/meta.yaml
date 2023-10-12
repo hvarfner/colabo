@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/d16a9576d8dd48ae90a665e14e914df2/artifacts
+end_time: 1697105500191
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d16a9576d8dd48ae90a665e14e914df2
+run_name: treasured-stag-864
+run_uuid: d16a9576d8dd48ae90a665e14e914df2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697105500184
+status: 3
+tags: []
+user_id: hvarfner

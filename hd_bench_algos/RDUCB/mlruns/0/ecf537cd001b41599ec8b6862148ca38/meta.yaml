@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/ecf537cd001b41599ec8b6862148ca38/artifacts
+end_time: 1697116690974
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ecf537cd001b41599ec8b6862148ca38
+run_name: shivering-croc-300
+run_uuid: ecf537cd001b41599ec8b6862148ca38
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697116674648
+status: 3
+tags: []
+user_id: hvarfner

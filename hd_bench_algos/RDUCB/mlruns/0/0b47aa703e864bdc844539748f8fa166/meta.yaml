@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hvarfner/Documents/pi-jes/bench_algos/RDUCB/mlruns/0/0b47aa703e864bdc844539748f8fa166/artifacts
+end_time: 1697110705242
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0b47aa703e864bdc844539748f8fa166
+run_name: clumsy-bat-994
+run_uuid: 0b47aa703e864bdc844539748f8fa166
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697110352762
+status: 3
+tags: []
+user_id: hvarfner
