@@ -454,7 +454,7 @@ class EmbeddedTuRBO(OptimizationMethod):
                 gp_behaviour=gp_behaviour,
                 hypers=hypers,
             )
-        if self.n_evals % 10 == 0 and len_hypers == 0:
+        if self.n_evals % 1000000 == 0 and len_hypers == 0:
             # save model
             full_arch_path = os.path.join(self.run_dir, self._model_history_archive)
             with ZipFile(
@@ -561,6 +561,7 @@ class EmbeddedTuRBO(OptimizationMethod):
         Returns: None
 
         """
+        return
         path = os.path.join(self.run_dir, f"{property_name}.txt.xz")
         if property_name not in self._fds:
             self._fds[property_name] = lzma.open(path, "wt")

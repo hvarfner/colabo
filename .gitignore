@@ -4,6 +4,7 @@ extra_cambs
 camb/*
 botorch/
 mf-prior-bench/
+*mlruns*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
