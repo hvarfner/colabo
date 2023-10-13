@@ -5,6 +5,7 @@ camb/*
 botorch/
 mf-prior-bench/
 *mlruns*
+*outcmaes*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

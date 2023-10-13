@@ -1,1 +1,0 @@
-{"initial base length": 0.8, "maximum base length": 1.6, "minimum base length": 0.0078125, "success tolerance": 3, "acquisition_functions": "THOMPSON_SAMPLING", "observation noise": 0.0, "embedding type": "BAXUS", "success decision factor": 0.001, "number of new bins per dimension": 3, "adjust initial target dimension": true, "budget until input dimension": 0}
