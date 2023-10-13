@@ -10,6 +10,8 @@ from turbo import Turbo1
 from MCTSVS.MCTS import MCTS
 from hdbo import algorithms
 import cma
+import yaml
+
 
 method_name =  sys.argv[1]
 function_name = sys.argv[2]
@@ -35,11 +37,22 @@ NEGATE = {
 from benchmarking.mappings import get_test_function
 from benchmarking.external import RecordedTrajectory
 
-NUM_EVALS = 10 * 100
-NUM_INIT = 20
-test_function = get_test_function(function_name, noise_std=0, seed=seed)
+BENCHMARK_PATH = f'../PiJES/configs/benchmark/{function_name}.yaml'
+
+with open(BENCHMARK_PATH, 'r') as file:
+    bench_dict = yaml.safe_load(file)
+
+
+NUM_EVALS = bench_dict['num_iters']
+NUM_INIT = bench_dict['num_init']
+config_bounds = [tuple(b) for b in bench_dict['bounds']]
+
+test_function = get_test_function(bench_dict['benchmark'], noise_std=bench_dict['noise_std'], seed=seed)   
+test_function._bounds = config_bounds
+test_function.bounds = Tensor(config_bounds).T
+
 f = RecordedTrajectory(test_function, 
-    function_name=function_name, 
+    function_name=bench_dict['name'], 
     method_name=method_name, 
     experiment_name=experiment_name,
     seed=seed
