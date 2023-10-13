@@ -12,14 +12,12 @@
 
 EXPNAME=$1
 # add rducb soon enough
-for SEED in 1 2
+for SEED in 1 2 3 4 5 6 7 8 9 10
 do
-    for MNAME in baxus mctsvs turbo cmaes
+    for MNAME in $METHODS
     do
-        for FUNNAME in ${SYN}
-        do
-            sbatch run_bench.sh $MNAME $FUNNAME $SEED $EXPNAME
-        done
+        for funname in ${SYN}
     done
 done
 
+python bench_run.py $MNAME $FUNNAME $SEED $EXPNAME

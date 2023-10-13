@@ -27,8 +27,8 @@ class OptimizationMethod(ABC):
         if conf_name is not None:
             with open(os.path.join(run_dir, "conf_name.txt"), "w+") as f:
                 f.write(conf_name)
-        with open(os.path.join(run_dir, "conf_dict.json"), "w+") as f:
-            json.dump(self.conf_dict, f)
+        #with open(os.path.join(run_dir, "conf_dict.json"), "w+") as f:
+        #    json.dump(self.conf_dict, f)
 
         self._optimized = False
         self.run_dir = run_dir

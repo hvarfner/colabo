@@ -4,7 +4,7 @@
 #SBATCH -n 2
 #SBATCH --job-name error_run${1}_${2}
 #SBATCH --time 4:00:00
-
+#SBATCH -A naiss2023-22-1024 
 #method_name =  sys.argv[1]
 #function_name = sys.argv[2]
 #seed = int(sys.argv[3])
