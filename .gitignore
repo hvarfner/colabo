@@ -6,6 +6,7 @@ botorch/
 mf-prior-bench/
 *mlruns*
 *outcmaes*
+*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
