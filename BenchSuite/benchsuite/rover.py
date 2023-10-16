@@ -1,20 +1,49 @@
 import torch
+import numpy as np
+from benchsuite.rover_utils import RoverDomain, PointBSpline, ConstObstacleCost, NegGeom, AABoxes, UnionGeom, AdditiveCosts, \
+    ConstCost
+
+from benchsuite.helper import ConstantOffsetFn, NormalizedInputFn
+
 from ebo.test_functions.push_function import PushReward
 
 from benchsuite import settings
 from benchsuite.benchmark import Benchmark
 
+N_WAYPOINTS = 50
+FORCE_ENDPOINTS = True
+def l2cost(x, point):
+    return 10 * np.linalg.norm(x - point, 1)    
 
 class RoverBenchmark(Benchmark):
     def __init__(
         self
     ):
-        self._pr = PushReward()
-        super().__init__(
-            dim=60,
-            ub=torch.tensor(self._pr.xmax, dtype=settings.DTYPE, device=settings.DEVICE),
-            lb=torch.tensor(self._pr.xmin, dtype=settings.DTYPE, device=settings.DEVICE),
+        
+        self.domain = create_large_domain(
+            force_start=FORCE_ENDPOINTS,
+            force_goal=FORCE_ENDPOINTS,
+            start_miss_cost=l2cost,
+            goal_miss_cost=l2cost
         )
+        self.raw_x_range = np.repeat(self.domain.s_range, N_WAYPOINTS, axis=1)
+        super().__init__(
+            dim=N_WAYPOINTS * 2,
+            ub=torch.tensor(self.raw_x_range[0], dtype=settings.DTYPE, device=settings.DEVICE),
+            lb=torch.tensor(self.raw_x_range[1], dtype=settings.DTYPE, device=settings.DEVICE),
+        )
+
+    def __call__(self, X: torch.Tensor) -> torch.Tensor:
+
+
+        # maximum value of f
+        f_max = 5.0
+        f = ConstantOffsetFn(self.domain, f_max)
+
+        res = -torch.Tensor([f(X.detach().numpy())])
+        
+        return res
+
 
 def create_cost_large():
     c = np.array([[0.43143755, 0.20876147],
@@ -156,8 +185,7 @@ def create_large_domain(force_start=False,
                         goal_miss_cost=None):
     cost_fn, start, goal = create_cost_large()
 
-    n_points = 30
-    traj = PointBSpline(dim=2, num_points=n_points)
+    traj = PointBSpline(dim=2, num_points=N_WAYPOINTS)
     n_params = traj.param_size
     domain = RoverDomain(cost_fn,
                          start=start,
