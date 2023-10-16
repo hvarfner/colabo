@@ -1,0 +1,128 @@
+name: Nightly Cron
+
+on:
+  schedule:
+    # midnight EST
+    - cron:  '0 5 * * *'
+  # allow this to be scheduled manually in addition to cron
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "tutorials/**"
+
+jobs:
+
+  tests-and-coverage:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        botorch: ['pinned', 'latest']
+        requirements: ['minimal', 'full']
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - name: Install dependencies (full requirements, stable Botorch)
+      run: |
+        # will install the version of Botorch that is pinned in setup.py
+        pip install -e ".[unittest]"
+      if: matrix.botorch == 'pinned' && matrix.requirements == 'full'
+    - name: Install dependencies (minimal requirements, stable Botorch)
+      run: |
+        pip install -e ".[unittest_minimal]"
+      if: matrix.botorch == 'pinned' && matrix.requirements == 'minimal'
+    - name: Install dependencies (full requirements, Botorch main)
+      env:
+        ALLOW_BOTORCH_LATEST: true
+        ALLOW_LATEST_GPYTORCH_LINOP: true
+      run: |
+        pip install git+https://github.com/cornellius-gp/gpytorch.git
+        pip install git+https://github.com/pytorch/botorch.git
+        pip install -e ".[unittest]"
+      if: matrix.botorch == 'latest' && matrix.requirements == 'full'
+    - name: Install dependencies (minimal requirements, Botorch main)
+      env:
+        ALLOW_BOTORCH_LATEST: true
+        ALLOW_LATEST_GPYTORCH_LINOP: true
+      run: |
+        pip install git+https://github.com/cornellius-gp/gpytorch.git
+        pip install git+https://github.com/pytorch/botorch.git
+        pip install -e ".[unittest_minimal]"
+      if: matrix.botorch == 'latest' && matrix.requirements == 'minimal'
+    - name: Import Ax
+      run: |
+        python scripts/import_ax.py
+    - name: Tests
+      # run even if previous step (import Ax) failed
+      if: matrix.requirements == 'full'
+      run: |
+        pytest -ra
+
+  build-tutorials-with-pinned-botorch:
+    name: Build tutorials with pinned BoTorch
+    uses: ./.github/workflows/reusable_tutorials.yml
+
+  publish-latest-website:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - name: Install dependencies
+      env:
+        ALLOW_BOTORCH_LATEST: true
+        ALLOW_LATEST_GPYTORCH_LINOP: true
+      run: |
+        # use latest BoTorch
+        pip install git+https://github.com/cornellius-gp/gpytorch.git
+        pip install git+https://github.com/pytorch/botorch.git
+        pip install -e ".[tutorial]"
+    - name: Publish latest website
+      env:
+        DOCUSAURUS_PUBLISH_TOKEN: ${{ secrets.DOCUSAURUS_PUBLISH_TOKEN }}
+      run: |
+        bash scripts/publish_site.sh -d
+
+  deploy-test-pypi:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Fetch all history for all tags and branches
+      run: git fetch --prune --unshallow
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - name: Install dependencies
+      env:
+        ALLOW_BOTORCH_LATEST: true
+        ALLOW_LATEST_GPYTORCH_LINOP: true
+      run: |
+        # use latest BoTorch
+        pip install git+https://github.com/cornellius-gp/gpytorch.git
+        pip install git+https://github.com/pytorch/botorch.git
+        pip install -e ".[dev,mysql,notebook]"
+        pip install wheel
+    - name: Build wheel
+      run: |
+        python setup.py sdist bdist_wheel
+    - name: Deploy to Test PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.TEST_PYPI_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+        skip_existing: true
+        verbose: true

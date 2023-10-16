@@ -1,0 +1,25 @@
+<!--
+    Copyright (c) Meta Platforms, Inc. and affiliates. All Rights Reserved.
+-->
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <style>{{css}}</style>
+    <script type='text/javascript'>{{js_requires}}</script>
+</head>
+<body>
+  <div class="report_content">
+  {% for cell in cells %}
+  {% if cell.html %}
+  <div class="cell_header">
+    <h2>{{cell.caption}}</h2>
+  </div>
+  <div class="cell_body">
+    {{cell.html}}
+  </div>
+  {% endif %}
+  {% endfor %}
+  </div>
+</body>
+</html>
