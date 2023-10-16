@@ -1,0 +1,16 @@
+model_name: singletask_lognormal
+gp: SingleTaskGP
+model_kwargs: null
+gp_params: 
+    const: 
+      loc: 0
+      scale: 1
+    ls:
+      loc: 0
+      scale: 1
+    ops:
+      loc: 0
+      scale: 1
+    noise:
+      loc: 0
+      scale: 1

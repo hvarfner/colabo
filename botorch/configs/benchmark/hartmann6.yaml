@@ -1,0 +1,10 @@
+name: hartmann6
+benchmark: hartmann6
+num_iters: 120
+num_init: 7
+parameters: null
+bounds: [[0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1]] 
+prior_location: [0.20169, 0.150011, 0.476874, 0.275332, 0.311652, 0.6573]
+prior_value: 3.3223
+prior_confidence: 0.5
+noise_std: 0.25

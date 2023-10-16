@@ -1,0 +1,8 @@
+name: stybtang7
+benchmark: stybtang7
+num_iters: 140
+num_init: 8
+parameters: null
+bounds: [[-4, 4], [-4, 4], [-4, 4], [-4, 4], [-4, 4], [-4, 4], [-4, 4]]
+prior_location: [-2.903534, -2.903534, -2.903534, -2.903534, -2.903534, -2.903534, -2.903534]
+noise_std: 1

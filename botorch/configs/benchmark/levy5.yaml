@@ -1,0 +1,10 @@
+name: levy5
+benchmark: levy5
+num_iters: 100
+num_init: 6
+parameters: null
+bounds: [[-5, 5], [-5, 5], [-5, 5], [-5, 5], [-5, 5]] 
+prior_location: [1, 1, 1, 1, 1]
+noise_std: 0.5
+prior_value: 0
+prior_confidence: 1

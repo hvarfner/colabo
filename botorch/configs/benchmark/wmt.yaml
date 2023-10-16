@@ -1,0 +1,22 @@
+benchmark: pd1
+bounds:
+- - 0
+  - 1
+- - 0
+  - 1
+- - 0
+  - 1
+- - 0
+  - 1
+fixed_parameters: []
+name: pd1_wmt
+noise_std: 0
+num_init: 5
+num_iters: 80
+prior_location:
+- 0.9018582619563811
+- 0.6923532250751948
+- 0.01815463160985082
+- 0.966549063122995
+task_id: translatewmt_xformer_64
+

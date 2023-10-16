@@ -1,0 +1,4 @@
+name: Sampling
+acq_func: PiBO
+use_prior: true
+init_type: prior

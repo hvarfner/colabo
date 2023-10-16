@@ -1,0 +1,3 @@
+name: MES
+acq_func: MES
+init_type: sobol

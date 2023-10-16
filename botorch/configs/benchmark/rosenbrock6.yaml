@@ -1,0 +1,9 @@
+name: rosenbrock6
+benchmark: rosenbrock6
+num_iters: 120
+num_init: 7
+parameters: null
+bounds: [[-2.048, 2.048], [-2.048, 2.048], [-2.048, 2.048], [-2.048, 2.048], [-2.048, 2.048], [-2.048, 2.048]]
+prior_location: [1, 1, 1, 1, 1, 1]
+noise_std: 5
+range: 11718

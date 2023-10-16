@@ -1,0 +1,21 @@
+benchmark: pd1
+bounds:
+- - 0
+  - 1
+- - 0
+  - 1
+- - 0
+  - 1
+- - 0
+  - 1
+fixed_parameters: []
+name: pd1_cifar
+noise_std: 0
+num_init: 5
+num_iters: 80
+prior_location:
+- 1.0
+- 0.8035792904945235
+- 0.0
+- 0.0
+task_id: cifar100_wideresnet_2048

@@ -1,11 +1,19 @@
-# Custom added
-lrgdr7like/
-extra_cambs
-camb/*
-mf-prior-bench/
-*mlruns*
-*outcmaes*
+#custom
+#
+#
+addgp*.py
+acqcomp*.py
+benchmarking/gp_sample/gp_*dim*
+multirun/
+*.pdf
+/paper_plots
 *.csv
+/plots
+/results
+/outputs
+*.ipynb
+*.out
+*.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

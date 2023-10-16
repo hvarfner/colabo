@@ -1,0 +1,21 @@
+benchmark: pd1
+bounds:
+- - 0
+  - 1
+- - 0
+  - 1
+- - 0
+  - 1
+- - 0
+  - 1
+fixed_parameters: []
+name: pd1_lm1b
+noise_std: 0
+num_init: 5
+num_iters: 80
+prior_location:
+- 0.914687364002864
+- 0.6744589889938334
+- 0.35973090518423606
+- 0.8498404483714151
+task_id: lm1b_transformer_2048

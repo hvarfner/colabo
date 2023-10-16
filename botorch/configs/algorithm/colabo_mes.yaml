@@ -1,0 +1,8 @@
+name: MCpi-MES
+acq_func: MCpi-MES
+use_prior: true
+init_type: prior
+acq_kwargs:
+  num_optima: 16
+  num_samples: 76800
+  resampling_fraction: 0.0067
