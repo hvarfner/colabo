@@ -1,11 +1,11 @@
-# Official repository for the ColaBO ICLR 2024 submission
+# Official repository for __A General Framework for User-Guided Bayesian Optimization__ - ICLR 2024 Spotlight!
 
 This repository contains all the necessary code and run scripts to reproduce the results in the paper and Appendix, including the priors used for each experiment. All baselines and ColaBO are implemented in BoTorch, making use of a PathPosterior object, which is the MC-approximated posterior.
 
 
 ### TO RUN:
-0. Retrieve the necessary repositories:     
-```git clone **repo_name**```
+0. Retrieve the necessary repository:     
+```git clone **this repo**```
 1. Install the environment:   ```conda env create -f env.yaml # This can cause an error with mf-prior-bench (JAHS-bench specifically), but can safely be ignored```
  (python 3.9 is the only version tested for support)
 3. Add the necessary paths to PYTHONPATH:     
